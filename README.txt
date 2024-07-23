@@ -1,0 +1,6 @@
+- arduinos communicate with python server to update and get data values
+  - need library to do get requests
+- python server creates combined values, reads solar controllers, etc
+- have one arduino read all data and send to Remote XY app
+  - get request to /get_all - returns json
+  - assign values to Remote XY struct
