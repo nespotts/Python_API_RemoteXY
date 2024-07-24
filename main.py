@@ -79,7 +79,6 @@ def set_battery_params(voltage, current, power, state_of_charge, state_of_charge
   return variables
 
 
-# function solar_controller
 @app.get("/set_solar_params/{solar_id}/{voltage}/{current}/{power}/{battery_voltage}/{battery_current}/{state_of_charge}/{controller_temp}")
 def set_solar_params(solar_id, voltage, current, power, battery_voltage, battery_current, state_of_charge, controller_temp):
   variables[f"solar{solar_id}_voltage"] = voltage
@@ -89,6 +88,15 @@ def set_solar_params(solar_id, voltage, current, power, battery_voltage, battery
   variables[f"solar{solar_id}_battery_current"] = battery_current
   variables[f"solar{solar_id}_state_of_charge"] = state_of_charge
   variables[f"solar{solar_id}_controller_temp"] = controller_temp
+  cache_variables(variables)
+  return variables
+
+
+@app.get("/set_temps/{inside_temperature}/{outside_temperature}/{electrical_cabinet_temperature}")
+def set_temps(inside_temperature, outside_temperature, electrical_cabinet_temperature):
+  variables["inside_temperature"] = inside_temperature
+  variables["outside_temperature"] = outside_temperature
+  variables["electrical_cabinet_temperature"] = electrical_cabinet_temperature
   cache_variables(variables)
   return variables
 
