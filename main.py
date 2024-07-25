@@ -69,13 +69,14 @@ def set_bms_parameters(bms_id, voltage, current, state_of_charge, state_of_charg
   cache_variables(variables)
   # return variables
 
-@app.get("/set_battery_params/{voltage}/{current}/{power}/{state_of_charge}/{state_of_charge_percent}")
-def set_battery_params(voltage, current, power, state_of_charge, state_of_charge_percent):
+@app.get("/set_battery_params/{voltage}/{current}/{power}/{state_of_charge}/{state_of_charge_percent}/{load_current}")
+def set_battery_params(voltage, current, power, state_of_charge, state_of_charge_percent, load_current):
   variables["battery_voltage"] = voltage
   variables["battery_current"] = current
   variables["battery_power"] = power
   variables["battery_state_of_charge"] = state_of_charge
   variables["battery_state_of_charge_percent"] = state_of_charge_percent
+  variables["load_current"] = load_current
   cache_variables(variables)
   # return variables
 
